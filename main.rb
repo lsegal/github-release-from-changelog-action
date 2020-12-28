@@ -3,6 +3,11 @@
 
 require 'json'
 
+if ARGV.empty?
+  $stderr.puts "Tag is omitted from arguments (missing GITHUB_REF)"
+  exit 1
+end
+
 # Export tag
 tag = ARGV[0].sub(%r{^refs/[^/]+/}, '')
 puts "::set-output name=tag::#{tag}"
