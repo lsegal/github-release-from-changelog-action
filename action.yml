@@ -13,6 +13,20 @@ inputs:
     description: Optional filename of changelog (default searches across a range of changelog filenames).
     required: false
     default: ""
+  title:
+    description: |
+      Optional title formatting for release, defaults to "Release $tag".
+      Use $tag as tag value.
+    required: false
+    default: Release $tag
+  draft:
+    description: Generate a draft release if true
+    required: false
+    default: "false"
+  prerelease:
+    description: Generate a pre-release if true
+    required: false
+    default: "false"
 outputs:
   tag:
     description: The resolved tag name used by the action
@@ -20,7 +34,5 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: ruby ${{ github.action_path }}/main.rb ${{ inputs.tag }}
-      env:
-        FILENAME: ${{ inputs.filename }}
+    - run: ruby ${{ github.action_path }}/main.rb
       shell: bash
