@@ -28,11 +28,15 @@ inputs:
     required: false
     default: "false"
 outputs:
+  release_url:
+    description: The GitHub release URL
+    value: ${{ steps.main.outputs.release_url }}
   tag:
     description: The resolved tag name used by the action
-    value: ${{ steps.tag.outputs.tag }}
+    value: ${{ steps.main.outputs.tag }}
 runs:
   using: "composite"
   steps:
     - run: ruby ${{ github.action_path }}/main.rb
+      id: main
       shell: bash

@@ -7,8 +7,6 @@ require 'tempfile'
 def truthy(val) !(val.nil? || val.empty? || val.to_s.downcase == 'false') end
 
 logfile = Tempfile.new
-logfile.write()
-logfile.flush
 
 # Export tag
 tag = (ENV['INPUT_TAG'] || ENV['GITHUB_REF'] || '').sub(%r{^refs/[^/]+/}, '')
