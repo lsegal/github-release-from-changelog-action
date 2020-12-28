@@ -23,7 +23,7 @@ package = {
 File.open('package.json', 'w') {|f| f.write(JSON.generate(package)) }
 
 # Run release command
-cmd = ['npx', 'github-release-from-changelog', '--debug', '--dryRun']
+cmd = ['npx', 'github-release-from-changelog']
 cmd += ['--filename', ENV['FILENAME']] unless (ENV['FILENAME'] || '').empty?
 system(cmd.join(' '))
 IO.popen('git checkout package.json || rm package.json', err: :out)
