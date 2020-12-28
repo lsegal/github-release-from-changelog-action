@@ -1,5 +1,9 @@
 name: GitHub Release From Changelog
 description: Creates a GitHub Release using Changelog file
+author: Loren Segal
+branding:
+  icon: award
+  color: green
 inputs:
   tag:
     description: The tag to use for the release. Omit if triggering from a tag event.
