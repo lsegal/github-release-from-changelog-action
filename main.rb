@@ -11,7 +11,7 @@ puts "::set-output name=tag::#{tag}"
 package = {
   version: tag.sub(/^v/, ''),
   repository: {
-    type: 'git'
+    type: 'git',
     url: "git://github.com/#{ENV['GITHUB_REPOSITORY']}"
   }
 }
