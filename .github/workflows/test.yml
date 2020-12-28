@@ -1,0 +1,13 @@
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate GitHub Release
+        uses: lsegal/github-release-from-changelog-action@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
