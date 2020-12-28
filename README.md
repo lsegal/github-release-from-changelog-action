@@ -18,6 +18,10 @@ common changelog filenames.
 
 ## Outputs
 
+### `release_url`
+
+The GitHub release URL.
+
 ### `tag`
 
 The tag used to create the release.
