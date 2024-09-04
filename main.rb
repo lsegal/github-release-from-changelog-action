@@ -14,7 +14,7 @@ if tag.empty?
   $stderr.puts "Tag is omitted from arguments (missing GITHUB_REF)"
   exit 1
 end
-puts "::set-output name=tag::#{tag}"
+File.write(ENV['GITHUB_OUTPUT'], "tag=#{tag}\n", mode: 'a')
 
 # Find changelog
 filenames = (ENV['INPUT_FILENAME'] || '').empty? ?
@@ -42,7 +42,7 @@ cmd += ['-t', title.inspect]
 puts "Command: #{cmd.join(' ')}"
 out = `#{cmd.join(' ')}`.strip
 result = $?
-puts "::set-output name=release_url::#{out}" if result.to_i == 0
+File.write(ENV['GITHUB_OUTPUT'], "release_url=#{out}\n", mode: 'a') if result.to_i == 0
 puts out
 logfile.unlink
 exit result.to_i
